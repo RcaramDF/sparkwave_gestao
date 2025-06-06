@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Favicon Generator</title>
+</head>
+<body>
+    <canvas id="favicon" width="64" height="64"></canvas>
+    <script>
+        // Criar um favicon simples com as cores da SparkWave
+        const canvas = document.getElementById('favicon');
+        const ctx = canvas.getContext('2d');
+        
+        // Cor de fundo (azul escuro)
+        ctx.fillStyle = '#050A30';
+        ctx.fillRect(0, 0, 64, 64);
+        
+        // Texto (branco off-white)
+        ctx.fillStyle = '#F4F6FC';
+        ctx.font = 'bold 32px Arial';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText('SW', 32, 32);
+        
+        // Converter para imagem
+        const dataUrl = canvas.toDataURL('image/png');
+        
+        // Exibir a imagem
+        const img = new Image();
+        img.src = dataUrl;
+        document.body.appendChild(img);
+        
+        // Adicionar link para download
+        const link = document.createElement('a');
+        link.href = dataUrl;
+        link.download = 'favicon.ico';
+        link.textContent = 'Download Favicon';
+        document.body.appendChild(link);
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Logo Generator</title>
+</head>
+<body>
+    <canvas id="logo" width="400" height="200"></canvas>
+    <script>
+        // Criar um logo simples com as cores da SparkWave
+        const canvas = document.getElementById('logo');
+        const ctx = canvas.getContext('2d');
+        
+        // Cor de fundo (transparente)
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        // Gradiente de fundo
+        const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+        gradient.addColorStop(0, '#050A30');
+        gradient.addColorStop(1, '#0A1550');
+        
+        // Desenhar retângulo com cantos arredondados
+        const radius = 20;
+        ctx.fillStyle = gradient;
+        ctx.beginPath();
+        ctx.moveTo(radius, 0);
+        ctx.lineTo(canvas.width - radius, 0);
+        ctx.quadraticCurveTo(canvas.width, 0, canvas.width, radius);
+        ctx.lineTo(canvas.width, canvas.height - radius);
+        ctx.quadraticCurveTo(canvas.width, canvas.height, canvas.width - radius, canvas.height);
+        ctx.lineTo(radius, canvas.height);
+        ctx.quadraticCurveTo(0, canvas.height, 0, canvas.height - radius);
+        ctx.lineTo(0, radius);
+        ctx.quadraticCurveTo(0, 0, radius, 0);
+        ctx.closePath();
+        ctx.fill();
+        
+        // Texto "SparkWave"
+        ctx.fillStyle = '#F4F6FC';
+        ctx.font = 'bold 48px Arial';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText('SparkWave', canvas.width / 2, canvas.height / 2 - 15);
+        
+        // Texto "Consultoria Empresarial"
+        ctx.fillStyle = '#8B8383';
+        ctx.font = '24px Arial';
+        ctx.fillText('Consultoria Empresarial', canvas.width / 2, canvas.height / 2 + 25);
+        
+        // Adicionar um ícone de gráfico estilizado
+        ctx.strokeStyle = '#F4F6FC';
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+        ctx.moveTo(100, 140);
+        ctx.lineTo(130, 100);
+        ctx.lineTo(160, 120);
+        ctx.lineTo(190, 80);
+        ctx.lineTo(220, 110);
+        ctx.lineTo(250, 70);
+        ctx.lineTo(300, 130);
+        ctx.stroke();
+        
+        // Converter para imagem
+        const dataUrl = canvas.toDataURL('image/png');
+        
+        // Exibir a imagem
+        const img = new Image();
+        img.src = dataUrl;
+        document.body.appendChild(img);
+        
+        // Adicionar link para download
+        const link = document.createElement('a');
+        link.href = dataUrl;
+        link.download = 'logo.png';
+        link.textContent = 'Download Logo';
+        document.body.appendChild(link);
+    </script>
+</body>
+</html>
+

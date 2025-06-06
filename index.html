@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - SparkWave Consultoria Empresarial</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-header">
+            <img src="img/logo.png" alt="SparkWave Consultoria Empresarial" class="logo" id="logo-placeholder">
+            <h1>SparkWave Consultoria</h1>
+            <p>Acesso ao Portal do Cliente</p>
+        </div>
+        
+        <div class="login-form">
+            <div class="form-group">
+                <label for="username">Usuário</label>
+                <input type="text" id="username" class="form-control" placeholder="Digite seu nome de usuário" required>
+                <div class="error-message" id="username-error">Nome de usuário é obrigatório</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Senha</label>
+                <input type="password" id="password" class="form-control" placeholder="Digite sua senha" required>
+                <div class="error-message" id="password-error">Senha é obrigatória</div>
+            </div>
+            
+            <button type="button" id="login-button" class="btn-login">
+                Entrar
+                <span class="spinner"></span>
+            </button>
+            
+            <div class="error-message" id="login-error">Credenciais inválidas. Por favor, tente novamente.</div>
+        </div>
+        
+        <div class="login-footer">
+            &copy; 2025 SparkWave Consultoria Empresarial. Todos os direitos reservados.
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
+

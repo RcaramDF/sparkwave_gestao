@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gerador de Avatar</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: Arial, sans-serif;
+        }
+        canvas {
+            border: 1px solid #ccc;
+            margin: 20px;
+        }
+        a {
+            padding: 10px 20px;
+            background-color: #050A30;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Avatar Genérico</h1>
+    <canvas id="avatarCanvas" width="200" height="200"></canvas>
+    <a id="downloadLink" href="#" download="avatar.png">Baixar Avatar</a>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const canvas = document.getElementById('avatarCanvas');
+            const ctx = canvas.getContext('2d');
+            const downloadLink = document.getElementById('downloadLink');
+            
+            // Desenhar o avatar
+            function drawAvatar() {
+                // Fundo
+                ctx.fillStyle = '#F4F6FC';
+                ctx.fillRect(0, 0, 200, 200);
+                
+                // Círculo de fundo
+                ctx.fillStyle = '#050A30';
+                ctx.beginPath();
+                ctx.arc(100, 100, 80, 0, Math.PI * 2);
+                ctx.fill();
+                
+                // Cabeça
+                ctx.fillStyle = '#8B8383';
+                ctx.beginPath();
+                ctx.arc(100, 85, 40, 0, Math.PI * 2);
+                ctx.fill();
+                
+                // Corpo
+                ctx.beginPath();
+                ctx.moveTo(60, 120);
+                ctx.quadraticCurveTo(100, 180, 140, 120);
+                ctx.fill();
+                
+                // Atualizar o link de download
+                downloadLink.href = canvas.toDataURL('image/png');
+            }
+            
+            // Desenhar o avatar quando a página carregar
+            drawAvatar();
+        });
+    </script>
+</body>
+</html>
+

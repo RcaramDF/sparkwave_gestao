@@ -1,0 +1,62 @@
+version: '3.8'
+
+services:
+  # Banco de dados PostgreSQL
+  postgres:
+    image: postgres:14-alpine
+    container_name: sparkwave-postgres
+    restart: always
+    environment:
+      POSTGRES_DB: sparkwavedb
+      POSTGRES_USER: sparkwave
+      POSTGRES_PASSWORD: sparkwave_secure_password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - sparkwave-network
+
+  # Backend Spring Boot
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: sparkwave-backend
+    restart: always
+    depends_on:
+      - postgres
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/sparkwavedb
+      SPRING_DATASOURCE_USERNAME: sparkwave
+      SPRING_DATASOURCE_PASSWORD: sparkwave_secure_password
+      JWT_SECRET: sparkwave_secret_key_muito_segura_e_longa_para_garantir_a_seguranca_dos_tokens
+      JWT_EXPIRATION: 86400000
+      SPARKWAVE_APP_CORS_ALLOWEDORIGINS: http://localhost:80,https://seu-dominio.com
+      SPARKWAVE_APP_REDIRECT_URL: https://school-finance-wizard.lovable.app/calculos
+    ports:
+      - "8080:8080"
+    networks:
+      - sparkwave-network
+
+  # Frontend Nginx
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: sparkwave-frontend
+    restart: always
+    depends_on:
+      - backend
+    ports:
+      - "80:80"
+    networks:
+      - sparkwave-network
+
+networks:
+  sparkwave-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+
