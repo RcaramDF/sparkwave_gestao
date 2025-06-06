@@ -1,22 +1,22 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
-         https://maven.apache.org/xsd/maven-4.0.0.xsd">
+                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.sparkwave.login</groupId>
-    <artifactId>backend</artifactId>
+    <groupId>com.sparkwave</groupId>
+    <artifactId>login</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
 
-    <name>backend</name>
-    <description>Projeto de backend para o sistema de login SparkWave</description>
+    <name>login</name>
+    <description>Projeto de login da SparkWave</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>3.5.0</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath/> <!-- busca o parent no repositório central -->
     </parent>
 
     <properties>
@@ -24,50 +24,56 @@
     </properties>
 
     <dependencies>
-        <!-- Dependência principal do Spring Boot -->
+        <!-- Spring Boot Starters -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <!-- Suporte a envio de e-mails -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-mail</artifactId>
-        </dependency>
-
-        <!-- Suporte ao contexto do Spring -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-        </dependency>
-
-        <!-- Suporte ao envio de e-mails com JavaMail -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context-support</artifactId>
-        </dependency>
-
-        <!-- Suporte a JPA e Hibernate -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
 
-        <!-- Driver JDBC para PostgreSQL (ajuste conforme seu banco de dados) -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+
+        <!-- Envio de e-mails -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-mail</artifactId>
+        </dependency>
+
+        <!-- Thymeleaf (se estiver usando templates para e-mails) -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+
+        <!-- Banco de dados H2 (para testes) -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
+        <!-- Driver JDBC do PostgreSQL (ou outro banco que estiver usando) -->
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <scope>runtime</scope>
         </dependency>
 
-        <!-- Suporte a validação de beans -->
+        <!-- Lombok (para reduzir código boilerplate) -->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-validation</artifactId>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
         </dependency>
 
-        <!-- Suporte a testes com Spring Boot -->
+        <!-- Testes -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -77,7 +83,7 @@
 
     <build>
         <plugins>
-            <!-- Plugin do Spring Boot para empacotamento -->
+            <!-- Plugin do Spring Boot -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
