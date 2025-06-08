@@ -24,7 +24,7 @@
   </properties>
 
   <dependencies>
-    <!-- Core Spring Boot Starter -->
+    <!-- Core Spring Boot -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter</artifactId>
@@ -36,39 +36,39 @@
       <artifactId>spring-boot-starter-security</artifactId>
     </dependency>
 
-    <!-- Spring Boot Starter Mail (inclui JavaMailSender) -->
+    <!-- Spring Boot Mail -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-mail</artifactId>
     </dependency>
 
-    <!-- Thymeleaf para templates de e-mail -->
+    <!-- Thymeleaf (para templates de email) -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-thymeleaf</artifactId>
     </dependency>
 
-    <!-- Jakarta Mail (separado) -->
+    <!-- Jakarta Mail -->
     <dependency>
       <groupId>com.sun.mail</groupId>
       <artifactId>jakarta.mail</artifactId>
-      <version>2.1.0</version>
+      <version>2.1.1</version>
     </dependency>
 
-    <!-- Spring Data JPA e H2/PostgreSQL -->
+    <!-- Spring Data JPA -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-data-jpa</artifactId>
     </dependency>
 
-    <!-- Conector PostgreSQL -->
+    <!-- PostgreSQL Driver -->
     <dependency>
       <groupId>org.postgresql</groupId>
       <artifactId>postgresql</artifactId>
       <scope>runtime</scope>
     </dependency>
 
-    <!-- JWT dependendo da lib escolhida -->
+    <!-- JWT -->
     <dependency>
       <groupId>io.jsonwebtoken</groupId>
       <artifactId>jjwt-api</artifactId>
@@ -87,17 +87,29 @@
       <scope>runtime</scope>
     </dependency>
 
-    <!-- Outros que já existiam... -->
+    <!-- Lombok -->
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>1.18.26</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <!-- Testes (opcional) -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
 
   <build>
     <plugins>
-      <!-- Plugin default do Spring Boot -->
+      <!-- Plugin Spring Boot -->
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
       </plugin>
     </plugins>
   </build>
-
 </project>
