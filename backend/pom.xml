@@ -118,6 +118,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>3.1.0</version> <!-- ✅ versão adicionada aqui -->
                 <configuration>
                     <mainClass>com.sparkwave.login.SparkwaveLoginApplication</mainClass>
                     <excludes>
@@ -144,4 +145,5 @@
             </plugin>
         </plugins>
     </build>
+
 </project>
